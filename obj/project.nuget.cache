@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N4XWtjs0QDI=",
+  "dgSpecHash": "c1rKZlq1wGg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\FootballBettingApi.csproj",
+  "projectFilePath": "C:\\Users\\yo\\Desktop\\backend\\FootballBettingApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\yo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.2\\microsoft.aspnetcore.authentication.jwtbearer.9.0.2.nupkg.sha512",

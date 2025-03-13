@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\FootballBettingApi.csproj": {}
+    "C:\\Users\\yo\\Desktop\\backend\\FootballBettingApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\FootballBettingApi.csproj": {
+    "C:\\Users\\yo\\Desktop\\backend\\FootballBettingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\FootballBettingApi.csproj",
+        "projectUniqueName": "C:\\Users\\yo\\Desktop\\backend\\FootballBettingApi.csproj",
         "projectName": "FootballBettingApi",
-        "projectPath": "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\FootballBettingApi.csproj",
+        "projectPath": "C:\\Users\\yo\\Desktop\\backend\\FootballBettingApi.csproj",
         "packagesPath": "C:\\Users\\yo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yo\\Desktop\\FootBallBetting\\FootballBettingApi\\obj\\",
+        "outputPath": "C:\\Users\\yo\\Desktop\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yo\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+using backend.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -40,7 +42,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddSingleton<MatchService>();
+
 var app = builder.Build();
+
+var matchService = app.Services.GetRequiredService<MatchService>();
+matchService.StartServer();
 
 
 if (app.Environment.IsDevelopment())
