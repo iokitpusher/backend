@@ -23,7 +23,7 @@ namespace backend.Services {
         private readonly CancellationTokenSource _cancellationTokenSource = new(); //we need this because we will create a service and run it from a side thread, it would be blocking the main thread..
 
         public void StartServer() {
-            Task.Run(() => RunServer(_cancellationTokenSource.Token));
+            Task.Run(() => RunServer(_cancellationTokenSource.Token)); //create a specific task for this, also, we dont want to run this from the main thread as it would be blocking..
         }
 
         private async Task RunServer(CancellationToken cancellationToken) {
@@ -63,7 +63,8 @@ namespace backend.Services {
                 string team2;
                 do { team2 = Teams[Random.Next(Teams.Count)]; } while (team1 == team2);
 
-                DateTime matchDate = now.AddDays(Random.Next(-5, 5)); // Past & future matches
+                //DateTime matchDate = now.AddDays(Random.Next(-5, 5));
+                DateTime matchDate = now.AddMinutes(Random.Next(2,4)); //for debugging.. ugh, lets not wait days to test it..
                 string score = matchDate < now ? $"{Random.Next(5)}-{Random.Next(5)}" : "Upcoming";
 
                 Matches.Add(new Match(i + 1, team1, team2, matchDate, score));
@@ -71,13 +72,27 @@ namespace backend.Services {
         }
 
         private static void UpdateMatchScores() {
+            //TODO: check if all matches are expired, if they are lets generate new ones.
             DateTime now = DateTime.Now;
-            if ((now - lastUpdateTime).TotalMinutes < 1) return; 
+            if ((now - lastUpdateTime).TotalMinutes < 1) return;
+
+            bool allResolved = true;
+
             foreach (var match in Matches) {
                 if (match.Date < now && match.Score == "Upcoming")
                 {
                     match.Score = $"{Random.Next(5)}-{Random.Next(5)}";
                 }
+
+                if (match.Score == "Upcoming")
+                {
+                    allResolved = false;
+                }
+            }
+
+            if(allResolved)
+            {
+                //GenerateMatches(Matches.Count); //not worky, probaly will need to scheduke a timer.. it will overwrite current results w/o settling..
             }
 
             lastUpdateTime = now;
@@ -87,21 +102,6 @@ namespace backend.Services {
             return JsonSerializer.Serialize(new { matches = Matches }, new JsonSerializerOptions { WriteIndented = true });
         }
 
-        private class Match { //private is fine here, we will only use this internally
-            public int MatchId { get; }
-            public string Team1 { get; }
-            public string Team2 { get; }
-            public DateTime Date { get; }
-            public string Score { get; set; }
-
-            public Match(int matchId, string team1, string team2, DateTime date, string score)
-            {
-                MatchId = matchId;
-                Team1 = team1;
-                Team2 = team2;
-                Date = date;
-                Score = score;
-            }
-        }
+        
     }
 }

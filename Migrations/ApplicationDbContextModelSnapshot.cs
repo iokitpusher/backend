@@ -23,29 +23,24 @@ namespace FootballBettingApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BetAmount")
+                    b.Property<int>("Amount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("BetTime")
+                    b.Property<DateTime>("DatePlaced")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsSettled")
+                    b.Property<int>("MatchId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("MatchId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Prediction")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Result")
+                    b.Property<string>("TeamChosen")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("WinnerTeam")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
